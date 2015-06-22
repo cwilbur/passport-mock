@@ -1,6 +1,6 @@
 extend layout
 #login
-  if session.user.authToken
+  if user
     | You are logged in as #{ session.user.displayName }.
     button(id='logout-button' type='button') Log me out
   else

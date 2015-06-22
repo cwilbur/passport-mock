@@ -41,17 +41,17 @@ var passport = require('./lib/passport.js');
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
-
-
 var apiRouter = require('./lib/api-routes.js');
 app.use('/api', apiRouter);
+
+var authRouter = require('./lib/auth-routes.js');
+app.use('/auth', authRouter);
 
 app.get('/', function(req, res) {
   res.render('layout', {
     name: "Max",
-    message: 'Welcome to our contacts page! I hope you have a good stay.'
+    message: 'Welcome to our contacts page! I hope you have a good stay.',
+    user: req.user
   });
 });
 
