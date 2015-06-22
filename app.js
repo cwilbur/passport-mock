@@ -23,12 +23,13 @@ app.use(express.static(__dirname + '/public'));
 
 var session = require('express-session');
 var mongoSessionDB = require('connect-mongodb-session')(session);
-var store = new mongoSessionDB({
+var mongoStore = new mongoSessionDB({
   uri: config.mongo.uri,
   collection: 'webSessions'
 });
 
 app.use(session({
+  store: mongoStore,
   secret: config.secrets.SESSION_KEY,
   cookie: config.cookieOptions,
   resave: false,
