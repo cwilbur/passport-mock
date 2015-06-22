@@ -1,8 +1,10 @@
+var config = require('./config');
+s
 // models
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/guestbook');
-var Entry = require('/lib/entry.js');
+var Entry = require('./lib/entry.js');
 var User = require('./lib/user.js');
 
 // basic express setup, views
@@ -18,25 +20,7 @@ app.use(express.static(__dirname + '/public'));
 
 // authentication
 
-var passport = require('passport');
-
-passport.use(new GitHubStrategy({
-    clientID: GITHUB_CLIENT_ID,
-    clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: "http://127.0.0.1:3000/auth/github/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate({
-      githubId: profile.id
-    }, function(err, user) {
-      return done(err, user);
-    });
-  }
-));
-
-
-
-
+var passport = require('./lib/passport.js');
 
 var apiRouter = require('./lib/api-routes.js');
 app.use('/api', apiRouter);
