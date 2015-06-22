@@ -1,7 +1,7 @@
 {
-  "name": "node-demo",
-  "version": "0.0.1",
-  "description": "A simple project to demonstrate node.",
+  "name": "guestbook",
+  "version": "0.1.0",
+  "description": "A simple application to demonstrate authenticationg.",
   "main": "app.js",
   "scripts": {
     "test": "grunt jasmine-nodejs"
@@ -9,7 +9,14 @@
   "author": "Charlton Wilbur",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "async": "^1.0.0"
+    "async": "^1.2.1",
+    "body-parser": "^1.13.1",
+    "express": "^4.13.0",
+    "jade": "^1.11.0",
+    "mongoose": "^4.0.6",
+    "mongoose-autopopulate": "^0.1.0",
+    "passport": "^0.2.2",
+    "passport-github2": "^0.1.9"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
