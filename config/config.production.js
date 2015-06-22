@@ -4,7 +4,7 @@ var config = require('./config.global.js');
 
 config.env = 'production';
 config.hostname = 'intense-coast-5573.herokuapp.com';
-config.serverPort = 80;
+config.serverPort = process.env.PORT; // heroku is particular
 
 config.authCallbackUrl = 'https://intense-coast-5573.herokuapp.com/auth/github/callback';
 
