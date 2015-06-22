@@ -1,11 +1,11 @@
 $(document).ready(function() {
 
   $('#login-button').on('click', function() {
-    window.location('/auth/github');
+    window.location.href = '/auth/github';
   });
 
   $('#logout-button').on('click', function() {
-    window.location('/auth/logout')
+    window.location.href = '/auth/logout';
   });
 
 });
