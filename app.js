@@ -49,7 +49,7 @@ var apiRouter = require('./lib/api-routes.js');
 app.use('/api', apiRouter);
 
 app.get('/', function(req, res) {
-  res.render('index', {
+  res.render('layout', {
     name: "Max",
     message: 'Welcome to our contacts page! I hope you have a good stay.'
   });
