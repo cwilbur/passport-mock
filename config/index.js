@@ -12,16 +12,16 @@ var cfg = require(configFileName);
 
 if (cfg.mongo) {
 
-  var dbUrl = 'mongodb://';
+  var dbUri = 'mongodb://';
 
   var mongoUser = cfg.mongo && cfg.mongo.username;
   var mongoPass = cfg.mongo && cfg.mongo.password;
   if (mongoUser.length && mongoPass.length) {
-    dbUrl += util.format('%s:%s@', mongoUser, mongoPass);
+    dbUri += util.format('%s:%s@', mongoUser, mongoPass);
   }
 
   if (cfg.mongo.hosts && cfg.mongo.hosts.length > 0) {
-    dbUrl += mongo.hosts.map(function(host) {
+    dbUri += cfg.mongo.hosts.map(function(host) {
       return host.host + (host.port ? ':' + host.port : '');
     }).join(',') + '/';
   } else {
@@ -32,6 +32,8 @@ if (cfg.mongo) {
   if (cfg.mongo.db) {
     dbUri += cfg.mongo.db;
   }
+
+  cfg.mongo.uri = dbUri;
 }
 
 module.exports = cfg;

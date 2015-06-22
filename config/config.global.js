@@ -6,6 +6,15 @@ config.serverPort = 3000;
 
 config.authCallbackUrl = '';
 
+// extra app settings
+
+config.expressSettings = {};
+
+// cookies
+
+config.cookieOptions = {};
+
+
 // mongo database
 
 config.mongo = {};
@@ -25,7 +34,8 @@ config.mongo.db = 'guestbook';
 
 config.secretNames = [
   'GITHUB_CLIENT_SECRET',
-  'GITHUB_CLIENT_ID'
+  'GITHUB_CLIENT_ID',
+  'SESSION_KEY'
 ];
 
 var jsonKeys = {};
@@ -38,6 +48,7 @@ try {
   }
 }
 
+config.secrets = {};
 config.secretNames.forEach(function(name) {
   if (process.env[name] !== undefined) {
     config.secrets[name] = process.env[name];

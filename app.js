@@ -1,9 +1,9 @@
 var config = require('./config');
-s
+
 // models
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/guestbook');
+mongoose.connect(config.mongo.uri);
 var Entry = require('./lib/entry.js');
 var User = require('./lib/user.js');
 
@@ -18,9 +18,32 @@ app.set('views', './templates');
 
 app.use(express.static(__dirname + '/public'));
 
+// sessions
+// must be configured before authentication
+
+var session = require('express-session');
+var mongoSessionDB = require('connect-mongodb-session')(session);
+var store = new mongoSessionDB({
+  uri: config.mongo.uri,
+  collection: 'webSessions'
+});
+
+app.use(session({
+  secret: config.secrets.SESSION_KEY,
+  cookie: config.cookieOptions,
+  resave: false,
+  saveUninitialized: true
+}));
+
 // authentication
 
 var passport = require('./lib/passport.js');
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+
 
 var apiRouter = require('./lib/api-routes.js');
 app.use('/api', apiRouter);
@@ -32,7 +55,7 @@ app.get('/', function(req, res) {
   });
 });
 
-var server = app.listen(3000, function() {
+var server = app.listen(config.serverPort, function() {
 
   var host = server.address().address;
   var port = server.address().port;
