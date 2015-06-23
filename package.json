@@ -1,5 +1,5 @@
 {
-  "name": "passport-mock",
+  "name": "passport-mock-thirdparty",
   "version": "0.1.0",
   "description": "A mock passport authentication strategy for testing",
   "main": "index.js",
