@@ -1,3 +1,17 @@
-body {
-  background-color: rebeccapurple;
+.mockUser {
+  border: 2px solid black;
+}
+
+.mockUser .profile {
+  float: left;
+  width: 250px;
+}
+
+.mockUser .status {
+  float: left;
+  width: 250px;
+}
+
+.mockUser .controls {
+  clear: both;
 }

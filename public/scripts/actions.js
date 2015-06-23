@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
-  console.log('jQuery was here');
+  $('button.user-login').on('click', function() {
 
+  });
 });

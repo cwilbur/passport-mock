@@ -1,0 +1,15 @@
+.mockUser
+  h3(style='clear:both')
+    span.label.label-default #{ user.displayName }
+  .profile.col-xs-4
+    ul
+      each key in 'provider id username displayName profileURL'.split(' ')
+        li #{ key }: #{ user[key] }
+      li emails: #{ user.emails.join(', ')  }
+  .auth.col-xs-4
+    ul
+      each key in 'loggedIn lastLogin'.split(' ')
+        li #{ key }: #{ user.auth[key] }
+  .buttons.col-xs-4
+    button(type='button' class='user-login' data-userid='#{ user.id }') Log In
+
